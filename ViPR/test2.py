@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import sys
 from vipr import *
 
 client = ViPR(
@@ -12,4 +11,9 @@ client = ViPR(
         verify_ssl=False
     )
 
-print (sys.argv[1])
+snapshot_list = client.blocksnapshot.get_snapshots_bulk()
+for snapshot_id in snapshot_list:
+    snapshot_info = client.blocksnapshot.get_snapshot(snapshot_id)
+    if (snapshot_info['inactive'] == False):
+        volume_info = client.blockvolume.get_volume(snapshot_info['parent']['id'])
+        print (volume_info['name']),(snapshot_info['name'])
