@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# List ViPR volumes and their snapshots
+
 from vipr import *
 
 client = ViPR(

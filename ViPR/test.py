@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# List ViPR volumes and their capacity
+
 from vipr import *
 
 client = ViPR(
