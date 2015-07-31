@@ -7,8 +7,7 @@ client = ViPR(
         password='ChangeMe1!',
         token_endpoint='https://192.168.10.182:4443/login',
         vipr_endpoint='https://192.168.10.182:4443',
-        request_timeout=30,
-        verify_ssl=False
+        request_timeout=30
     )
 
 snapshot_list = client.blocksnapshot.get_snapshots_bulk()
