@@ -7,8 +7,7 @@ from vipr import *
 client = ViPR(
         username='root',
         password='ChangeMe1!',
-        token_endpoint='https://192.168.10.182:4443/login',
-        vipr_endpoint='https://192.168.10.182:4443',
+        endpoint='https://lppd144.lss.emc.com',
         request_timeout=30,
         verify_ssl=False
     )
