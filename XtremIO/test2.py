@@ -5,6 +5,12 @@ import json
 from pprint import pprint
 
 from config import *
+####
+# A file named config.py must be created with the following content
+# xio_host = 'ip or hostname'
+# xio_user = 'username'
+# xio_pass = 'password'
+####
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
