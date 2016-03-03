@@ -1,5 +1,9 @@
+#!/usr/bin/env python
 
+import xtremio
+import json
+from pprint import pprint
 
-
-
-volume_list = client.blockvolume.get_volumes_bulk()
+r = xtremio.get_volumes()
+json_data = json.loads(r.text)
+pprint(json_data)
