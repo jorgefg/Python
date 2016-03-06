@@ -1,12 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json
 import requests
 import base64
-import sys
 from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from pprint import pprint
 from config import *
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -19,6 +17,8 @@ headers = {'Accept':'application/json', 'Content-Type':'application/json', 'Auth
 
 response = requests.get('https://'+sio_host+'/api/types/Volume/instances', headers=headers, verify=False)
 
-json_data = json.loads(response.text)
-
-pprint(json_data)
+data = response.json()
+volume_count = 0
+for volume in data:
+    print (volume['id'],volume['name'],volume['sizeInKb'],volume['volumeType'])
+    volume_count += 1
