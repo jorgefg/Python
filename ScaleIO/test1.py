@@ -1,29 +1,20 @@
 #!/usr/bin/env python3
 
-import json
-import requests
-import base64
-from requests.auth import HTTPBasicAuth
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from config import *
+import scaleio
+from pprint import pprint
 
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-response = requests.get('https://'+sio_host+'/api/login', auth=HTTPBasicAuth(sio_user, sio_pass), verify=False)
-token = bytes.decode(base64.b64encode (bytes(':'+json.loads(response.text), "utf-8")))
-headers = {'Content-Type':'application/json', 'Authorization':'Basic '+token+''}
-
-response = requests.get('https://'+sio_host+'/api/types/Volume/instances', headers=headers, verify=False)
-data = response.json()
+data = scaleio.get_volumes()
 for volume in data:
-    response = requests.get('https://'+sio_host+volume['links'][1]['href'], headers=headers, verify=False)
-    statistics = response.json()
+    statistics = scaleio.get_volume_statistics(volume['id'])
+    pool = scaleio.get_pool(volume['storagePoolId'])
     print (
         volume['id'],
         volume['name'],
         volume['sizeInKb'],
         volume['volumeType'],
         volume['useRmcache'],
+        volume['ancestorVolumeId'],
+        pool['name'],
         statistics['userDataReadBwc']['totalWeightInKb'],
         statistics['userDataReadBwc']['numOccured'],
         statistics['userDataWriteBwc']['totalWeightInKb'],
