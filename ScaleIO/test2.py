@@ -12,7 +12,7 @@ response = requests.get('https://'+sio_host+'/api/login', auth=HTTPBasicAuth(sio
 token = bytes.decode(base64.b64encode (bytes(':'+json.loads(response.text), "utf-8")))
 headers = {'Content-Type':'application/json', 'Authorization':'Basic '+token+''}
 
-response = requests.get('https://'+sio_host+'/api/types/VTree/instances', headers=headers, verify=False)
+response = requests.get('https://'+sio_host+'/api/types/Volume/instances', headers=headers, verify=False)
 data = response.json()
 
 pprint (data)

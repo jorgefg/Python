@@ -1,6 +1,7 @@
 import json
 import requests
 import base64
+import collections
 from requests.auth import HTTPBasicAuth
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from config import *

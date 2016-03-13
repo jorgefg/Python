@@ -7,8 +7,14 @@ from config import *
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def get_volumes():
-    return requests.get('https://'+xio_host+'/api/json/v2/types/volumes', auth=HTTPBasicAuth(xio_user, xio_pass), verify=False)
+class BlockVolume():
 
-def get_volume_id(id):
-    return requests.get('https://'+xio_host+'/api/json/v2/types/volumes/'+id, auth=HTTPBasicAuth(xio_user, xio_pass), verify=False)
+    def __init__(self, connection):
+        self.conn = connection
+
+    def get_volumes_bulk(self):
+        json_data = requests.get('https://'+xio_host+'/api/json/v2/types/volumes', auth=HTTPBasicAuth(xio_user, xio_pass), verify=False)
+        return json_data['name']
+
+    def get_volume(self, volume_id):
+        return self.conn.get('block/volumes/{0}'.format(volume_id))

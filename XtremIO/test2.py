@@ -19,3 +19,5 @@ response = requests.get('https://'+xio_host+'/api/json/v2/types/volumes', auth=H
 json_data = json.loads(response.text)
 
 pprint(json_data)
+
+

@@ -12,6 +12,7 @@ for volume in data:
     if info['mappedSdcInfo']:
         mapped=True
     thin=False
+    data = {}
     print (
         volume['id'],
         volume['name'],
