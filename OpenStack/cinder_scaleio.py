@@ -5,7 +5,7 @@ from keystoneauth1 import session
 from cinderclient.v2 import client
 import base64
 from prettytable import PrettyTable
-#import os
+import os
 
 def get_volume_id(cinder, volume):
     formatted_volume = str(volume)
@@ -14,18 +14,12 @@ def get_volume_id(cinder, volume):
     return id
 
 auth = v3.Password(
-    #auth_url=os.environ['OS_AUTH_URL'],
-    #username=os.environ['OS_USERNAME'],
-    #user_domain_name=os.environ['OS_USER_DOMAIN_NAME'],
-    #project_name = os.environ['OS_PROJECT_NAME'],
-    #project_domain_name=os.environ['OS_PROJECT_DOMAIN_NAME'],
-    #password=os.environ['OS_PASSWORD']
-    auth_url='http://192.168.10.194:35357/v3',
-    username='admin',
-    user_domain_name='default',
-    project_name='admin',
-    project_domain_name='default',
-    password='changeme'
+    auth_url=os.getenv('OS_AUTH_URL'),
+    username=os.getenv('OS_USERNAME'),
+    user_domain_name=os.getenv('OS_USER_DOMAIN_NAME'),
+    project_name = os.getenv('OS_PROJECT_NAME'),
+    project_domain_name=os.getenv('OS_PROJECT_DOMAIN_NAME'),
+    password=os.getenv('OS_PASSWORD')
 )
 
 sess = session.Session(auth=auth,verify=False)
