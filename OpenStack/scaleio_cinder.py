@@ -13,8 +13,8 @@ import uuid
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 sio_host = '192.168.10.194'
-sio_user = 'admin'
-sio_pass = 'Changeme1!'
+sio_user = 'user'
+sio_pass = 'ScaleIO#2016'
 sio_port = '8443'
 
 def scaleio_get_volumes():
