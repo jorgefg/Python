@@ -28,7 +28,7 @@ cinder = client.Client(session=sess,endpoint_type='publicURL')
 
 volumes = cinder.volumes.list()
 
-t = PrettyTable(['OpenStack ID', 'OpenStack Name', 'ScaleIO Name', 'Size (GB)'])
+t = PrettyTable(['ID', 'Name', 'ScaleIO Name', 'Size'])
 for volume in volumes:
     volume_id = get_volume_id(cinder, volume)
     volume_name = cinder.volumes.get(volume_id)._info['name']
