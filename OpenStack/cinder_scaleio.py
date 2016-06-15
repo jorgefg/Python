@@ -16,9 +16,9 @@ def get_volume_id(cinder, volume):
 auth = v3.Password(
     auth_url=os.getenv('OS_AUTH_URL'),
     username=os.getenv('OS_USERNAME'),
-    user_domain_name=os.getenv('OS_USER_DOMAIN_NAME'),
+    user_domain_name=os.getenv('OS_USER_DOMAIN_NAME','default'),
     project_name = os.getenv('OS_PROJECT_NAME'),
-    project_domain_name=os.getenv('OS_PROJECT_DOMAIN_NAME'),
+    project_domain_name=os.getenv('OS_PROJECT_DOMAIN_NAME','default'),
     password=os.getenv('OS_PASSWORD')
 )
 
