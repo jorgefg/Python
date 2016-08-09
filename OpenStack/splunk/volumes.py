@@ -10,7 +10,7 @@ response = requests.get(URL + '/volumes/detail?all_tenants=1', headers=HEADERS, 
 
 data = json.loads(response.text)
 
-t = [["id", "name", "size", "status", "type", "zone", "bootable", "cg", "description", "encrypted", "multiattach", "host", "user_id", "tenant_id", "created_at", "updated_at"]]
+t = [["id", "name", "size", "status", "type", "zone", "bootable", "cg", "description", "encrypted", "multiattach", "os_host", "user_id", "tenant_id", "created_at", "updated_at"]]
 
 for volume in data['volumes']:
     t.append([
