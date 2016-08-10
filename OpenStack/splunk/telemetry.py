@@ -10,7 +10,7 @@ response = requests.get(URL + '/v2/samples', headers=HEADERS, verify=False)
 
 data = json.loads(response.text)
 
-t = [["id", "meter", "project_id", "recorded_at", "resource_id", "source", "timestamp", "type", "unit", "user_id", "volume"]]
+t = [["id", "meter", "project_id", "recorded_at", "resource_id", "meter_source", "timestamp", "type", "unit", "user_id", "volume"]]
 
 for meter in data:
     t.append([
