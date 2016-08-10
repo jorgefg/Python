@@ -24,7 +24,7 @@ for meter in data:
         meter['type'],
         meter['unit'],
         meter['user_id'],
-        meter['meter'],
+        meter['volume']
     ])
 
 for line in t:
